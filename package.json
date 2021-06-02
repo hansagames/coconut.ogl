@@ -1,0 +1,18 @@
+{
+	"scripts": {
+		"start": "webpack serve",
+		"postinstall": "lix download"
+	},
+	"dependencies": {
+		"ogl": "^0.0.73"
+	},
+	"devDependencies": {
+		"html-webpack-plugin": "^5.3.1",
+		"lix": "^15.10.1",
+		"simple-haxe-loader": "github:vrescobar/webpack-simple-haxe-loader",
+		"webpack": "^5.38.1",
+		"webpack-cli": "^4.7.0",
+		"webpack-dev-server": "^3.11.2",
+		"webpack-glsl-loader": "^1.0.1"
+	}
+}
