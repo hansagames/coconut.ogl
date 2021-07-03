@@ -21,13 +21,13 @@ class VNode {
 				}
 
 				var gl:ogl.GL;
-				override public function render(parent, cursor, later):coconut.diffing.internal.RNode<ogl.Transform> {
+				override public function render(parent, cursor, later, hydrate):coconut.diffing.internal.RNode<ogl.Transform> {
 					this.gl = (cast cursor).applicator.gl;
 					var ret = new coconut.ogl.internal.RNode<$target>(this, $i{name}, parent, cursor, later);
 					return ret;
 				}
 
-				override function create() {
+				override function create(?previous) {
 					return @:privateAccess ${ctx.type.getID().instantiate([macro this.gl, macro this.data])};//this is not good
 				}
 			};

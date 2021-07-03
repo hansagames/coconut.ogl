@@ -18,7 +18,7 @@ class RNode {
 				> {
 					final setters = new coconut.ogl.internal.Setters<$target>();
 					public function new(v, cls, parent, cursor, later) {
-						super(v, cls, parent, cursor, later);
+						super(v, cls, parent, cursor, later, false);
 						setters.set(native, v.data, null, this, parent, later);
 					}
 					override function updateNative(native:$target, next:coconut.ogl.internal.VNode<$target>, prev:coconut.ogl.internal.VNode<$target>, parent, later) {

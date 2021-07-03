@@ -28,13 +28,12 @@ class Renderer {
 	static public macro function mount(target, markup);
 }
 
-private class OglUICursor implements Cursor<Transform> {
+private class OglUICursor extends Cursor<Transform> {
 	var pos:Int;
 	final container:Transform;
-	public final applicator:Applicator<Transform>;
 
 	public function new(applicator, container:Transform, pos:Int) {
-		this.applicator = applicator;
+		super(applicator);
 		this.container = container;
 		this.pos = pos;
 	}
