@@ -51,7 +51,7 @@ class Setup {
 						return new coconut.ogl.internal.VNode<$self>(attr, hxxMeta.key, hxxMeta.ref);
 					}
 				}
-					
+
 			).fields
 		);
 	}

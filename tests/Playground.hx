@@ -25,7 +25,7 @@ class Playground {
         camera.lookAt(new Vec3(0, 0, 0));
 		Browser.document.body.appendChild(canvas);
 
-		coconut.ogl.Renderer.mount(scene, <MyView/>);
+		coconut.ogl.Renderer.mount({ target: scene, gl: renderer.gl }, <MyView/>);
 		Browser.window.requestAnimationFrame(render);
 	}
 	private function render(delta: Float): Void {

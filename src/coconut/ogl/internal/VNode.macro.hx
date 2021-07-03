@@ -20,11 +20,15 @@ class VNode {
 					this.data = data;
 				}
 
-				override public function render(parent, cursor, later):coconut.diffing.internal.RNode<ogl.Transform>
-					return new coconut.ogl.internal.RNode<$target>(this, $i{name}, parent, cursor, later);
+				var gl:ogl.GL;
+				override public function render(parent, cursor, later):coconut.diffing.internal.RNode<ogl.Transform> {
+					this.gl = (cast cursor).applicator.gl;
+					var ret = new coconut.ogl.internal.RNode<$target>(this, $i{name}, parent, cursor, later);
+					return ret;
+				}
 
 				override function create() {
-					return @:privateAccess ${ctx.type.getID().instantiate()};//this is not good
+					return @:privateAccess ${ctx.type.getID().instantiate([macro this.gl, macro this.data])};//this is not good
 				}
 			};
 		});

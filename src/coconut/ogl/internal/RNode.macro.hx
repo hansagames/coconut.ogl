@@ -29,25 +29,6 @@ class RNode {
 			function add(td)
 				ret.fields = ret.fields.concat(td.fields);
 
-			switch Context.follow(Context.typeof(macro (null:coconut.ogl.internal.Attributes<$target>))) {
-				case TAnonymous(_.get().fields => fields):
-					var rr = Context.getType('coconut.ogl.RenderResult');
-					for (f in fields) if (f.type.unifiesWith(rr)) {
-						var name = f.name;
-
-						var setter = 'set_$name';
-						add(macro class {
-							var $name:coconut.ogl.internal.Inlay;
-							public function $setter(param, parent, later) {
-								if (this.$name == null)
-									this.$name = new coconut.ogl.internal.Inlay(parent, (child) -> native.$name = child);
-								this.$name.update(param, later);
-							}
-						});
-					}
-				default:
-			}
-
 			return ret;
 		});
 	}
