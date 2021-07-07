@@ -3,13 +3,12 @@ package coconut.ogl;
 import coconut.diffing.*;
 import tink.state.Observable;
 import ogl.Transform;
+import ogl.GL;
 
 @:allow(coconut.ogl)
 class Renderer {
-	static final BACKEND = new OglUIBackend();
-
-	static public function mountInto(target:Transform, virtual:RenderResult) {
-		Root.fromNative(target, BACKEND).render(virtual);
+	static public function mountInto(ctx:{ target:Transform, gl:GL }, virtual:RenderResult) {
+		Root.fromNative(ctx.target, new OglUIBackend(ctx.gl)).render(virtual);
 	}
 
 	static public function getNative(view:View):Null<Transform> {
@@ -29,13 +28,12 @@ class Renderer {
 	static public macro function mount(target, markup);
 }
 
-private class OglUICursor implements Cursor<Transform> {
+private class OglUICursor extends Cursor<Transform> {
 	var pos:Int;
 	final container:Transform;
-	public final applicator:Applicator<Transform>;
 
 	public function new(applicator, container:Transform, pos:Int) {
-		this.applicator = applicator;
+		super(applicator);
 		this.container = container;
 		this.pos = pos;
 	}
@@ -49,12 +47,15 @@ private class OglUICursor implements Cursor<Transform> {
 		for (i in 0...count) {
 			container.removeChild(container.children[i]);
 		}
-			
+
 	}
 }
 
 private class OglUIBackend implements Applicator<Transform> {
-	public function new() {}
+	final gl:GL;
+	public function new(gl) {
+		this.gl = gl;
+	}
 
 	public function siblings(target:Transform):Cursor<Transform> {
 		return new OglUICursor(this, target.parent, target.parent.children.indexOf(target));

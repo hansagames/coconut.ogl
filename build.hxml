@@ -1,6 +1,6 @@
 -cp src
 -cp tests
--lib coconut.diffing
+-lib coconut.ogl
 -lib haxe-loader
 --main Playground
 -D js-es=6

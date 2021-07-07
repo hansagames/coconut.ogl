@@ -4,8 +4,8 @@ package ogl;
 extern class Transform {
     var position: Vec3;
     var rotation: Euler;
-    var parent: Null<Transform>;
-    var children: Array<Transform>;
+    var parent(default, null): Null<Transform>;
+    var children(default, null): Array<Transform>;
     public function new(): Void;
     public function lookAt(target: Vec3, ?inverse: Bool): Void;
     public function setParent(node: Null<Transform>, ?notifyChild: Bool): Void;

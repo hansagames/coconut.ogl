@@ -6,9 +6,9 @@ import ogl.GL;
 import ogl.Mesh;
 
 class BoxMesh extends Mesh {
-    public function new(gl: GL) {
-        super(gl, { 
-            geometry: new Box(gl), 
+    public function new(gl: GL, attr:{}) {
+        super(gl, {
+            geometry: new Box(gl),
             program: new Program(
                 gl,
                 {
@@ -17,5 +17,6 @@ class BoxMesh extends Mesh {
                 }
             )
         });
+        trace('yo!');
     }
 }
