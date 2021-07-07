@@ -17,6 +17,5 @@ class BoxMesh extends Mesh {
                 }
             )
         });
-        trace('yo!');
     }
 }

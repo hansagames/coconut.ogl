@@ -45,7 +45,7 @@ private class OglUICursor extends Cursor<Transform> {
 
 	public function delete(count:Int) {
 		for (i in 0...count) {
-			container.removeChild(container.children[i]);
+			container.removeChild(container.children[pos]);
 		}
 
 	}
